@@ -10,6 +10,12 @@ st.title("Daily Profit and Loss Chart")
 # Get the current credentials
 session = get_active_session()
 
+#Creating date picket to select date for graph
+distinct_date = st.selectbox(
+    "Select the Date",
+    distinct_dates)
+st.write("You selected:", distinct_date)
+
 #  Quering data using raw SQL using session.sql() e.g. session.sql("select * from table")
 created_dataframe = session.sql("SELECT date, time, balance FROM portfolio_projects.profit_and_loss.profit_loss_table")
 
