@@ -38,7 +38,7 @@ queried_data = created_dataframe.to_pandas()
 
 # Create a simple line chart
 st.subheader("Daily Balance Fluctuation")
-st.line_chart(data=queried_data, x="TIME", y="BALANCE")
+st.line_chart(data=queried_data, x="TIME", y="BALANCE",  width = 100, height = 500)
 
 #Showing underlying data for quality check
 st.subheader("Underlying data")
