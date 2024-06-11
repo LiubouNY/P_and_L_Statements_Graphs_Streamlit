@@ -16,8 +16,22 @@ distinct_date = st.selectbox(
     distinct_dates)
 st.write("You selected:", distinct_date)
 
-#  Quering data using raw SQL using session.sql() e.g. session.sql("select * from table")
-created_dataframe = session.sql("SELECT date, time, balance FROM portfolio_projects.profit_and_loss.profit_loss_table")
+
+#  Quering data using raw SQL using session.sql() e.g. session.sql("select * from table") and filter with WHERE caluse
+sql = """
+SELECT
+    time,
+    balance 
+FROM
+    portfolio_projects.profit_and_loss.profit_loss_table
+WHERE
+    date = '{d_date}'
+"""
+#Formating string with variable
+sql = sql.format(d_date=distinct_date)
+
+#Quering Snowflake
+created_dataframe = session.sql(sql)
 
 # Execute the query and convert it into a Pandas dataframe
 queried_data = created_dataframe.to_pandas()
