@@ -11,7 +11,7 @@ st.title("Daily Profit and Loss Chart")
 session = get_active_session()
 
 #Defining distinct dates for date picker
-sql = f"SELECT DISTINCT date FROM portfolio_projects.profit_and_loss.profit_loss_table"
+sql = f"SELECT DISTINCT date FROM portfolio_projects.profit_and_loss.profit_loss_table ORDER BY date"
 distinct_dates = session.sql(sql).to_pandas()
 
 
