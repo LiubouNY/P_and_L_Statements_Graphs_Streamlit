@@ -10,6 +10,11 @@ st.title("Daily Profit and Loss Chart")
 # Get the current credentials
 session = get_active_session()
 
+#Defining distinct dates for date picker
+sql = f"SELECT DISTINCT date FROM portfolio_projects.profit_and_loss.profit_loss_table"
+distinct_dates = session.sql(sql).to_pandas()
+
+
 #Creating date picket to select date for graph
 distinct_date = st.selectbox(
     "Select the Date",
